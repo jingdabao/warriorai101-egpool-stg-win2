@@ -45,7 +45,7 @@ stages:
     - bash: |
         python -m venv worker_venv
         source worker_venv/bin/activate
-        pip install -r requirements.txt
+        pip install --target="./.python_packages/lib/python3.6/site-packages" -r ./requirements.txt
       workingDirectory: $(workingDirectory)
       displayName: 'Install application dependencies'
 
