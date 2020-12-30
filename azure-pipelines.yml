@@ -49,6 +49,7 @@ stages:
       workingDirectory: $(workingDirectory)
       displayName: 'Install application dependencies'
 
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
