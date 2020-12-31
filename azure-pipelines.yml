@@ -11,6 +11,12 @@ variables:
 
   # Function app name
   functionAppName: 'funcapppythonlinux'
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appType: 'functionAppLinux'
+    appName: '$(functionAppName)'
+    package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
