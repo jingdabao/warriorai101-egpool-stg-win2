@@ -85,14 +85,13 @@ stages:
         deploy:
 
           steps:
-          - task: AzureFunctionApp@1
-            displayName: 'Azure functions app deploy'
-            inputs:
-              azureSubscription: '$(azureSubscription)'
-              appType: 'functionAppLinux'
-              appName: '$(functionAppName)'
-              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
-              DeploymentMethod: 'zipDeploy'
+
+        - task: AzureFunctionApp@1
+          inputs:
+            azureSubscription: 'Microsoft Azure 内部消耗 (87fc2e36-0f9b-424d-b5f3-fdc82fbe452a)'
+            appType: 'functionAppLinux'
+            appName: 'funcapppythonlinux'
+            package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 
 
