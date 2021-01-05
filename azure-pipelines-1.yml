@@ -8,9 +8,16 @@ pool:
 
 steps:
 - task: UsePythonVersion@0
+  displayName: 'Setting python version to 3.8 as required by functions'
   inputs:
     versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+    architecture: 'x64'
+- bash: |
+   if [ -f extensions.csproj ]
+    then
+        dotnet build extensions.csproj --output ./bin
+    fi
+    pip install --target="./.python_packages/lib/site-packages" -r ./requirements.txt 
 
 - script: |
     python3.8 -m venv worker_venv
